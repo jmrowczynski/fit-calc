@@ -1,0 +1,27 @@
+export const theme = {
+    primary: '#FDD343',
+    secondary: '#FCF7E3',
+    bright: '#FFF',
+    dark: '#000',
+    lightgrey: '#F7F7F7',
+    darkgrey: '#CECECE',
+    others: '#FF3C3C',
+    fat: '#00B100',
+    carbohydrates: '#3C8EFF',
+    protein: '#FDD343',
+    success: '#00B100',
+    fail: '#FF3C3C',
+    fontWeight: {
+        medium: '500',
+        bold: '600',
+    },
+    fontSize: {
+        xxs: '1.7rem',
+        xs: '2rem',
+        s: '2.4rem',
+        m: '3rem',
+        l: '3.6rem',
+        xl: '4rem',
+        xxl: '8rem',
+    },
+};
