@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import dropIcon from 'assets/images/dropdown.svg';
-import magnifierIcon from 'assets/images/magnifier.svg';
+import dropIcon from 'assets/images/icons/dropdown.svg';
+import magnifierIcon from 'assets/images/icons/magnifier.svg';
 
 const Input = styled.input`
     padding: 10px 14px;

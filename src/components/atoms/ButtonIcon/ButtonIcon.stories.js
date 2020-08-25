@@ -5,11 +5,16 @@ export default {
     component: ButtonIcon,
     title: 'Atoms/Button icon',
     argTypes: {
-        plus: { control: 'boolean' },
+        type: {
+            control: {
+                type: 'inline-radio',
+                options: ['minus', 'plus', 'hamburger'],
+            },
+        },
     },
 };
 
 export const Basic = args => <ButtonIcon {...args} />;
 Basic.args = {
-    plus: false,
+    type: 'minus',
 };

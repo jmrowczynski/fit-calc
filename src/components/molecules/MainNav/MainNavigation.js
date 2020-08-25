@@ -37,9 +37,7 @@ const MainNav = ({ logged }) => (
             {logged && (
                 <>
                     <li>
-                        <StyledLink href="/">
-                            Products
-                        </StyledLink>
+                        <StyledLink href="/">Products</StyledLink>
                     </li>
                     <li>
                         <StyledLink href="/">Recipes</StyledLink>

@@ -9,6 +9,8 @@ export const theme = {
     fat: '#00B100',
     carbohydrates: '#3C8EFF',
     protein: '#FDD343',
+    product: '#FDD343',
+    meal: '#00B100',
     success: '#00B100',
     fail: '#FF3C3C',
     fontWeight: {

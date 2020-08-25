@@ -1,8 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
-import { ReactComponent as HeartIcon } from 'assets/images/heart.svg';
+import { ReactComponent as HeartIcon } from 'assets/images/icons/heart.svg';
+import { ReactComponent as RemoveIcon } from 'assets/images/icons/remove.svg';
 
 const StyledWrapper = styled.div`
     display: flex;
@@ -19,7 +21,7 @@ const StyledWrapper = styled.div`
         top: 0;
         height: 100%;
         width: 4px;
-        background-color: ${({ theme }) => theme.primary};
+        background-color: ${({ theme, cardType }) => theme[cardType]};
     }
 `;
 
@@ -37,12 +39,19 @@ const InnerWrapper = styled.div`
         transform: translateY(-50%);
         height: 70%;
         width: 2px;
-        background-color: ${({ theme }) => theme.primary};
+        background-color: ${({ theme, cardType }) => theme[cardType]};
     }
 `;
 
 const HeartWrapper = styled.div`
     padding-left: 20px;
+    ${({ favorite }) =>
+        !favorite &&
+        css`
+            path {
+                fill: ${({ theme }) => theme.dark};
+            }
+        `}
 `;
 const GraphWrapper = styled.div`
     margin-top: 10px;
@@ -55,9 +64,9 @@ const Chart = styled.div`
     margin-bottom: 6px;
 `;
 
-const ItemCard = () => (
-    <StyledWrapper>
-        <InnerWrapper>
+const ItemCard = ({ remove, favorite, cardType }) => (
+    <StyledWrapper cardType={cardType}>
+        <InnerWrapper cardType={cardType}>
             <Heading as="h2" color="dark" size="s">
                 Bread
             </Heading>
@@ -71,10 +80,21 @@ const ItemCard = () => (
                 <Chart color="protein" width="50%" />
             </GraphWrapper>
         </InnerWrapper>
-        <HeartWrapper>
-            <HeartIcon />
+        <HeartWrapper favorite={favorite}>
+            {remove ? <RemoveIcon /> : <HeartIcon />}
         </HeartWrapper>
     </StyledWrapper>
 );
+
+ItemCard.propTypes = {
+    remove: PropTypes.bool,
+    favorite: PropTypes.bool,
+    cardType: PropTypes.oneOf(['product', 'meal']).isRequired,
+};
+
+ItemCard.defaultProps = {
+    remove: false,
+    favorite: false,
+};
 
 export default ItemCard;

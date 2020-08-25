@@ -1,5 +1,4 @@
 import React from 'react';
-import { theme } from 'theme/mainTheme';
 import Heading from './Heading';
 
 export default {
@@ -28,5 +27,5 @@ export const Basic = Template.bind({});
 Basic.args = {
     children: 'FitCalc',
     size: 'm',
-    color: theme.primary,
+    color: 'primary',
 };
