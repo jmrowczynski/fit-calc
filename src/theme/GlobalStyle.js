@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        padding: 2.5rem; 
         font-size: 1.6rem;
     }
 `;
