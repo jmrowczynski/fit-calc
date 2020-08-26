@@ -8,9 +8,18 @@ const StyledWrapper = styled.button`
     justify-content: center;
     align-items: center;
     border: none;
-    width: ${({ type }) => (type === 'hamburger' ? '66px' : '30px')};
-    height: ${({ type }) => (type === 'hamburger' ? '66px' : '30px')};
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
+    ${({ type }) =>
+        type === 'hamburger' &&
+        css`
+            width: 66px;
+            height: 66px;
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+        `}
 `;
 
 const StyledIcon = styled.div`
