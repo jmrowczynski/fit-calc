@@ -11,18 +11,9 @@ const StyledWrapper = styled.button`
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    ${({ type }) =>
-        type === 'hamburger' &&
-        css`
-            width: 66px;
-            height: 66px;
-            position: fixed;
-            right: 25px;
-            bottom: 25px;
-        `}
 `;
 
-const StyledIcon = styled.div`
+const StyledIcon = styled.span`
     position: relative;
     display: flex;
     justify-content: center;
@@ -31,8 +22,8 @@ const StyledIcon = styled.div`
     height: 2px;
     background-color: ${({ theme }) => theme.bright};
 
-    ${({ type }) =>
-        type === 'plus' &&
+    ${({ plus }) =>
+        plus &&
         css`
             &::before {
                 content: '';
@@ -41,36 +32,20 @@ const StyledIcon = styled.div`
                 background-color: ${({ theme }) => theme.bright};
             }
         `}
-
-    ${({ type }) =>
-        type === 'hamburger' &&
-        css`
-            width: 34px;
-            &::before,
-            &::after {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 2px;
-                background-color: ${({ theme }) => theme.bright};
-            }
-            &::before {
-                transform: translateY(-9px);
-            }
-            &::after {
-                transform: translateY(9px);
-            }
-        `}
 `;
 
-const ButtonIcon = ({ type }) => (
-    <StyledWrapper type={type}>
-        <StyledIcon type={type} />
+const ButtonIcon = ({ plus, ...props }) => (
+    <StyledWrapper {...props}>
+        <StyledIcon plus={plus} />
     </StyledWrapper>
 );
 
 ButtonIcon.propTypes = {
-    type: PropTypes.oneOf(['minus', 'plus', 'hamburger']).isRequired,
+    plus: PropTypes.bool,
+};
+
+ButtonIcon.defaultProps = {
+    plus: false,
 };
 
 export default ButtonIcon;

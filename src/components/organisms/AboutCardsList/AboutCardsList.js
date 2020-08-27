@@ -3,6 +3,23 @@ import styled from 'styled-components';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 
+const content = [
+    {
+        title: 'Products',
+        description:
+            'Search for products, add them to your favorites and compose meals later on.',
+    },
+    {
+        title: 'Recipes',
+        description:
+            'Know tasty and healthy recipes from around the world and shareyours. If you like any, add it to your favorites.',
+    },
+    {
+        title: 'History',
+        description: 'Place where you can view meals history and analyze data.',
+    },
+];
+
 const StyledWrapper = styled.article`
     padding: 17px 25px;
     box-shadow: 6px 4px 46px -24px rgba(0, 0, 0, 0.75);
@@ -10,13 +27,19 @@ const StyledWrapper = styled.article`
     min-height: 170px;
     display: flex;
     flex-direction: column;
+    max-width: 420px;
 `;
 
 const GridWrapper = styled.div`
     padding: 25px;
     display: grid;
-    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr;
     grid-row-gap: 46px;
+    justify-items: center;
+    ${({ theme }) => theme.desktop`
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 30px;
+    `};
 `;
 
 const StyledHeading = styled(Heading)`
@@ -29,32 +52,14 @@ const StyledParagraph = styled(Paragraph)`
 
 const AboutCard = () => (
     <GridWrapper>
-        <StyledWrapper>
-            <StyledHeading size="xs" color="dark" as="h2">
-                Products
-            </StyledHeading>
-            <StyledParagraph size="xxs">
-                Search for products, add them to your favorites and compose
-                meals later on.
-            </StyledParagraph>
-        </StyledWrapper>
-        <StyledWrapper>
-            <StyledHeading size="xs" color="dark" as="h2">
-                Recipes
-            </StyledHeading>
-            <StyledParagraph size="xxs">
-                Know tasty and healthy recipes from around the world and
-                shareyours. If you like any, add it to your favorites.
-            </StyledParagraph>
-        </StyledWrapper>
-        <StyledWrapper>
-            <StyledHeading size="xs" color="dark" as="h2">
-                History
-            </StyledHeading>
-            <StyledParagraph size="xxs">
-                Place where you can view meals history and analyze data.
-            </StyledParagraph>
-        </StyledWrapper>
+        {content.map(({ title, description }) => (
+            <StyledWrapper key={title}>
+                <StyledHeading size="xs" color="dark" as="h2">
+                    {title}
+                </StyledHeading>
+                <StyledParagraph size="xxs">{description}</StyledParagraph>
+            </StyledWrapper>
+        ))}
     </GridWrapper>
 );
 
