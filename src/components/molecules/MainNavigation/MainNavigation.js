@@ -7,9 +7,11 @@ const StyledNav = styled.nav`
     position: fixed;
     top: 0;
     left: 0;
-    opacity: 0.95;
-    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
     width: 100%;
+    height: 100vh;
+    transition: transform 0.3s;
+    transform: translateX(${({ collapse }) => (collapse ? '0' : '100%')});
 `;
 
 const StyledList = styled.ul`
@@ -31,8 +33,8 @@ const StyledLink = styled.a`
     color: ${({ theme }) => theme.dark};
 `;
 
-const MainNav = ({ logged }) => (
-    <StyledNav>
+const MainNavigation = ({ logged, collapse }) => (
+    <StyledNav collapse={collapse}>
         <StyledList logged={logged}>
             {logged && (
                 <>
@@ -56,12 +58,14 @@ const MainNav = ({ logged }) => (
         </StyledList>
     </StyledNav>
 );
-MainNav.propTypes = {
+MainNavigation.propTypes = {
     logged: PropTypes.bool,
+    collapse: PropTypes.bool,
 };
 
-MainNav.defaultProps = {
+MainNavigation.defaultProps = {
     logged: false,
+    collapse: false,
 };
 
-export default MainNav;
+export default MainNavigation;
