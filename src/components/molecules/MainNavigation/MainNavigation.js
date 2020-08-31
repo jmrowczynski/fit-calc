@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
+import { Link } from 'react-router-dom';
 
 const StyledNav = styled.nav`
     position: fixed;
@@ -27,7 +28,7 @@ const StyledList = styled.ul`
     transform: translate(-50%, -50%);
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
     text-decoration: none;
     font-size: ${({ theme }) => theme.fontSize.xl};
     color: ${({ theme }) => theme.dark};
@@ -39,18 +40,22 @@ const MainNavigation = ({ logged, collapse }) => (
             {logged && (
                 <>
                     <li>
-                        <StyledLink href="/">Products</StyledLink>
+                        <StyledLink to="/products/favorites">
+                            Products
+                        </StyledLink>
                     </li>
                     <li>
-                        <StyledLink href="/">Recipes</StyledLink>
+                        <StyledLink to="/recipes/categories">
+                            Recipes
+                        </StyledLink>
                     </li>
                     <li>
-                        <StyledLink href="/">Reports</StyledLink>
+                        <StyledLink to="/reports">Reports</StyledLink>
                     </li>
                 </>
             )}
             <li>
-                <StyledLink href="/">About</StyledLink>
+                <StyledLink to="/">About</StyledLink>
             </li>
             <li>
                 <Button>Log {logged ? 'out' : 'in'}</Button>
@@ -64,7 +69,7 @@ MainNavigation.propTypes = {
 };
 
 MainNavigation.defaultProps = {
-    logged: false,
+    logged: true,
     collapse: false,
 };
 
