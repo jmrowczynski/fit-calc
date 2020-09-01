@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import Heading from 'components/atoms/Heading/Heading';
 import Input from 'components/atoms/Input/Input';
@@ -12,6 +13,7 @@ const StyledWrapper = styled.header`
 
 const StyledHeading = styled(Heading)`
     position: relative;
+    margin-right: 30px;
     &::before {
         content: '';
         position: absolute;
@@ -27,21 +29,19 @@ const StyledSpan = styled.span`
     color: ${({ theme }) => theme.darkgrey};
 `;
 
-const Header = ({ search }) => (
+const Header = ({ location: { pathname } }) => (
     <StyledWrapper>
         <StyledHeading size="m">
             Fit<StyledSpan>Calc</StyledSpan>
         </StyledHeading>
-        {search && <Input search />}
+        {!pathname.includes('add') && <Input inputName="search" search />}
     </StyledWrapper>
 );
 
 Header.propTypes = {
-    search: PropTypes.bool,
+    location: PropTypes.shape({
+        pathname: PropTypes.string,
+    }).isRequired,
 };
 
-Header.defaultProps = {
-    search: false,
-};
-
-export default Header;
+export default withRouter(Header);

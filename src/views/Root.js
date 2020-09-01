@@ -1,8 +1,8 @@
 import React from 'react';
 import MainTemplate from 'templates/MainTemplate';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import AboutView from './AboutView';
 import ProductsView from './ProductsView';
+import AboutView from './AboutView';
 import RecipesView from './RecipesView';
 import ReportsView from './ReportsView';
 

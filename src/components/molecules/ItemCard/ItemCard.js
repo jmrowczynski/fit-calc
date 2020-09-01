@@ -6,7 +6,7 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import { ReactComponent as HeartIcon } from 'assets/images/icons/heart.svg';
 import { ReactComponent as RemoveIcon } from 'assets/images/icons/remove.svg';
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.li`
     display: flex;
     align-items: center;
     position: relative;
@@ -31,6 +31,7 @@ const InnerWrapper = styled.div`
     flex-direction: column;
     padding-right: 20px;
     position: relative;
+    cursor: pointer;
     &::before {
         content: '';
         position: absolute;
@@ -64,14 +65,21 @@ const Chart = styled.div`
     margin-bottom: 6px;
 `;
 
-const ItemCard = ({ remove, favorite, cardType }) => (
+const ItemCard = ({
+    isRemoveIcon,
+    favorite,
+    cardType,
+    title,
+    calories,
+    modalOpenFn,
+}) => (
     <StyledWrapper cardType={cardType}>
-        <InnerWrapper cardType={cardType}>
+        <InnerWrapper cardType={cardType} onClick={modalOpenFn}>
             <Heading as="h2" color="dark" size="s">
-                Bread
+                {title}
             </Heading>
             <Paragraph color="darkgrey" size="xxs">
-                200 kcal
+                {calories}kcal
             </Paragraph>
             <GraphWrapper>
                 <Chart color="others" width="100%" />
@@ -81,19 +89,22 @@ const ItemCard = ({ remove, favorite, cardType }) => (
             </GraphWrapper>
         </InnerWrapper>
         <HeartWrapper favorite={favorite}>
-            {remove ? <RemoveIcon /> : <HeartIcon />}
+            {isRemoveIcon ? <RemoveIcon /> : <HeartIcon />}
         </HeartWrapper>
     </StyledWrapper>
 );
 
 ItemCard.propTypes = {
-    remove: PropTypes.bool,
+    isRemoveIcon: PropTypes.bool,
     favorite: PropTypes.bool,
     cardType: PropTypes.oneOf(['product', 'meal']).isRequired,
+    title: PropTypes.string.isRequired,
+    calories: PropTypes.number.isRequired,
+    modalOpenFn: PropTypes.func.isRequired,
 };
 
 ItemCard.defaultProps = {
-    remove: false,
+    isRemoveIcon: false,
     favorite: false,
 };
 
