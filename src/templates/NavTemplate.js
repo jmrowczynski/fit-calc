@@ -12,9 +12,9 @@ const NavTemplate = ({ children }) => {
 
     return (
         <>
-            {children}
             <MainNavigation collapse={collapse} />
             <Hamburger onClick={toggleCollapse} collapse={collapse} />
+            {children}
         </>
     );
 };

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Button = styled.button`
     width: 262px;
@@ -11,6 +11,13 @@ const Button = styled.button`
     font-size: ${({ theme }) => theme.fontSize.l};
     font-family: 'Montserrat', sans-serif;
     font-weight: ${({ theme }) => theme.fontWeight.bold};
+    ${({ secondary }) =>
+        secondary &&
+        css`
+            width: 125px;
+            height: 36px;
+            font-size: ${({ theme }) => theme.fontSize.xs};
+        `}
 `;
 
 export default Button;

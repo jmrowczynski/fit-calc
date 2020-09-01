@@ -14,6 +14,7 @@ const StyledLink = styled(NavLink)`
     text-decoration: none;
     color: ${({ theme }) => theme.dark};
     margin-right: 16px;
+    font-size: ${({ theme }) => theme.fontSize.xs};
     &.active {
         &::before {
             content: '';
