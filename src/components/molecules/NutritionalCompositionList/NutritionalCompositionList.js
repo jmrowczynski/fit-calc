@@ -6,7 +6,14 @@ const StyledList = styled.ul`
     display: grid;
     grid-template-columns: 1fr 1fr;
     list-style: none;
-    grid-row-gap: 10px;
+    grid-gap: 10px;
+    ${({ theme }) => theme.tablet`
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 30px;
+    `};
+    ${({ theme }) => theme.desktop`
+        grid-template-columns: repeat(8, 1fr);
+    `};
 `;
 
 const NutritionalCompositionList = () => (

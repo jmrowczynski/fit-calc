@@ -14,6 +14,7 @@ const StyledHamburger = styled.button`
     position: fixed;
     right: 25px;
     bottom: 25px;
+    z-index: 100;
 `;
 
 const StyledLines = styled.span`
