@@ -34,7 +34,9 @@ const Header = ({ location: { pathname } }) => (
         <StyledHeading size="m">
             Fit<StyledSpan>Calc</StyledSpan>
         </StyledHeading>
-        {!pathname.includes('add') && <Input inputName="search" search />}
+        {!(pathname.includes('add') || pathname.includes('categories')) && (
+            <Input inputName="search" search />
+        )}
     </StyledWrapper>
 );
 
