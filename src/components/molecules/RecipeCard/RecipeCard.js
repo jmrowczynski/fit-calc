@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ReactComponent as HeartIcon } from 'assets/images/icons/heart.svg';
+import { ReactComponent as RemoveIcon } from 'assets/images/icons/remove.svg';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 
@@ -10,13 +11,19 @@ const StyledWrapper = styled.article`
     overflow: hidden;
     box-shadow: 6px 4px 46px -24px rgba(0, 0, 0, 0.75);
     border-radius: 16px;
+    padding: 17px 25px;
+    display: flex;
+    height: 125px;
+    background-color: ${({ theme, image }) =>
+        image ? 'transparent' : theme.primary};
 `;
 
-const DescriptionWrapper = styled.div`
+const ContentWrapper = styled.div`
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding-right: 30px;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 1;
 `;
 
 const InnerWrapper = styled.div`
@@ -24,16 +31,25 @@ const InnerWrapper = styled.div`
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    padding-right: 10px;
     flex: 1;
 `;
 
-const ContentWrapper = styled.div`
-    position: relative;
-    padding: 15px 25px;
+const DescriptionWrapper = styled.div`
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    height: 125px;
-    z-index: 1;
+`;
+
+const IconWrapper = styled.div`
+    padding-left: 20px;
+    ${({ favorite }) =>
+        !favorite &&
+        css`
+            path {
+                fill: ${({ theme }) => theme.dark};
+            }
+        `}
 `;
 
 const BlurredWrapper = styled.div`
@@ -42,7 +58,7 @@ const BlurredWrapper = styled.div`
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: url(${({ image }) => image});
+    background: url(${({ image }) => image});
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -50,8 +66,8 @@ const BlurredWrapper = styled.div`
     z-index: 0;
 `;
 
-const RecipeCard = ({ image }) => (
-    <StyledWrapper>
+const RecipeCard = ({ image, isRemoveIcon, favorite }) => (
+    <StyledWrapper image={image}>
         <ContentWrapper>
             <InnerWrapper>
                 <Heading color="bright" size="s">
@@ -64,14 +80,24 @@ const RecipeCard = ({ image }) => (
                     </Paragraph>
                 </DescriptionWrapper>
             </InnerWrapper>
-            <HeartIcon />
+            <IconWrapper favorite={favorite}>
+                {isRemoveIcon ? <RemoveIcon /> : <HeartIcon />}
+            </IconWrapper>
         </ContentWrapper>
-        <BlurredWrapper image={image} />
+        {image && <BlurredWrapper image={image} />}
     </StyledWrapper>
 );
 
 RecipeCard.propTypes = {
-    image: PropTypes.string.isRequired,
+    isRemoveIcon: PropTypes.bool,
+    favorite: PropTypes.bool,
+    image: PropTypes.string,
+};
+
+RecipeCard.defaultProps = {
+    isRemoveIcon: false,
+    favorite: false,
+    image: null,
 };
 
 export default RecipeCard;

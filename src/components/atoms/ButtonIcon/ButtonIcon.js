@@ -21,7 +21,6 @@ const StyledIcon = styled.span`
     width: 20px;
     height: 2px;
     background-color: ${({ theme }) => theme.bright};
-
     ${({ plus }) =>
         plus &&
         css`
@@ -35,7 +34,7 @@ const StyledIcon = styled.span`
 `;
 
 const ButtonIcon = ({ plus, ...props }) => (
-    <StyledWrapper {...props}>
+    <StyledWrapper aria-label={plus ? 'Add' : 'Remove'} {...props}>
         <StyledIcon plus={plus} />
     </StyledWrapper>
 );

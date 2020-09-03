@@ -6,15 +6,21 @@ import { NavLink, withRouter } from 'react-router-dom';
 const StyledList = styled.ul`
     list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 500px;
+    margin: auto;
+    ${({ theme }) => theme.tablet`
+        justify-content: center;
+    `};
 `;
 
 const StyledLink = styled(NavLink)`
     position: relative;
     text-decoration: none;
     color: ${({ theme }) => theme.dark};
-    margin-right: 16px;
-    font-size: ${({ theme }) => theme.fontSize.xs};
+    font-size: ${({ theme }) => theme.fontSize.xxs};
+
     &.active {
         &::before {
             content: '';
@@ -26,6 +32,13 @@ const StyledLink = styled(NavLink)`
             background-color: ${({ theme }) => theme.primary};
         }
     }
+    ${({ theme }) => theme.mobileM`
+        font-size: ${theme.fontSize.xs};
+    `};
+
+    ${({ theme }) => theme.tablet`
+        margin-right: 35px;
+    `};
 `;
 
 const SubNavigation = ({ match }) => (

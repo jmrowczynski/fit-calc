@@ -36,7 +36,6 @@ const StyledInput = styled.input`
         textarea &&
         css`
             background-color: ${({ theme }) => theme.secondary};
-            color: ${({ theme }) => theme.primary};
             border-radius: 16px;
             resize: none;
             padding: 19px 0 0 14px;
