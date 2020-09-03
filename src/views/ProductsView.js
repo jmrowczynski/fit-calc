@@ -10,6 +10,7 @@ import SubNavigation from 'components/molecules/SubNavigation/SubNavigation';
 import NutritionalCompositionList from 'components/molecules/NutritionalCompositionList/NutritionalCompositionList';
 import ProductDetailsModal from 'components/molecules/ProductDetailsModal/ProductDetailsModal';
 import ProductsForm from 'components/organisms/ProductsForm/ProductsForm';
+import GridTemplate from 'templates/GridTemplate';
 
 const favorites = [
     {
@@ -115,26 +116,11 @@ const all = [
     },
 ];
 
-const StyledWrapper = styled.section`
+const StyledWrapper = styled.div`
     padding: 50px 25px;
     display: grid;
     grid-template-columns: 1fr;
     grid-row-gap: 25px;
-    justify-items: stretch;
-`;
-
-const StyledGrid = styled.ul`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 20px;
-    ${({ theme }) => theme.tablet`
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-gap: 30px;
-    `};
-    ${({ theme }) => theme.desktop`
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        grid-gap: 40px;
-    `};
 `;
 
 const StyledParagraph = styled(Paragraph)`
@@ -187,7 +173,7 @@ const ProductsView = ({ location: { pathname } }) => {
                         path="/products/favorites"
                         render={() =>
                             favorites.length ? (
-                                <StyledGrid>
+                                <GridTemplate>
                                     {favorites.map(
                                         ({
                                             title,
@@ -214,7 +200,7 @@ const ProductsView = ({ location: { pathname } }) => {
                                             />
                                         )
                                     )}
-                                </StyledGrid>
+                                </GridTemplate>
                             ) : (
                                 <StyledParagraph>
                                     No favorite products yet. Add some, please.
@@ -225,7 +211,7 @@ const ProductsView = ({ location: { pathname } }) => {
                     <Route
                         path="/products/all"
                         render={() => (
-                            <StyledGrid>
+                            <GridTemplate>
                                 {all.map(
                                     ({
                                         title,
@@ -249,7 +235,7 @@ const ProductsView = ({ location: { pathname } }) => {
                                         />
                                     )
                                 )}
-                            </StyledGrid>
+                            </GridTemplate>
                         )}
                     />
                     <Route path="/products/add" component={ProductsForm} />

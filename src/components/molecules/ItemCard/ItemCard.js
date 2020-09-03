@@ -44,7 +44,7 @@ const InnerWrapper = styled.div`
     }
 `;
 
-const HeartWrapper = styled.div`
+const IconWrapper = styled.div`
     padding-left: 20px;
     ${({ favorite }) =>
         !favorite &&
@@ -88,9 +88,9 @@ const ItemCard = ({
                 <Chart color="protein" width="50%" />
             </GraphWrapper>
         </InnerWrapper>
-        <HeartWrapper favorite={favorite}>
+        <IconWrapper favorite={favorite}>
             {isRemoveIcon ? <RemoveIcon /> : <HeartIcon />}
-        </HeartWrapper>
+        </IconWrapper>
     </StyledWrapper>
 );
 

@@ -5,17 +5,15 @@ import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
 
 const StyledWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    ${({ theme }) => theme.tablet`
-        margin-top: 50px;
-        align-items: center;
-    `};
-`;
-
-const StyledForm = styled.form`
     width: 100%;
     max-width: 450px;
+    margin: auto;
+    ${({ theme }) => theme.tablet`
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 6px 4px 46px -24px rgba(0, 0, 0, 0.75);
+        margin-top: 40px;
+    `};
 `;
 
 const InnerWrapper = styled.section`
@@ -34,11 +32,11 @@ const ProductsForm = () => (
         <StyledHeading as="h2" size="xl">
             Add product
         </StyledHeading>
-        <StyledForm>
+        <form>
             <InnerWrapper>
                 <Input
                     inputName="type"
-                    labelText="Product type"
+                    labelText="Recipe type"
                     select
                     name="type"
                     as="select"
@@ -88,7 +86,7 @@ const ProductsForm = () => (
                 />
             </InnerWrapper>
             <Button secondary>Add</Button>
-        </StyledForm>
+        </form>
     </StyledWrapper>
 );
 
