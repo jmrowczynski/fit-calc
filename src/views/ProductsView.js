@@ -121,7 +121,6 @@ const StyledWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-row-gap: 25px;
-    /* justify-items: stretch; */
 `;
 
 const StyledParagraph = styled(Paragraph)`

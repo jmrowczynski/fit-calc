@@ -36,7 +36,7 @@ const ProductsForm = () => (
             <InnerWrapper>
                 <Input
                     inputName="type"
-                    labelText="Product type"
+                    labelText="Recipe type"
                     select
                     name="type"
                     as="select"

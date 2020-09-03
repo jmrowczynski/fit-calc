@@ -11,6 +11,7 @@ import dinnerImage from 'assets/images/backgrounds/dinner.jpg';
 import lunchImage from 'assets/images/backgrounds/lunch.jpg';
 import supperImage from 'assets/images/backgrounds/supper.jpg';
 import dessertImage from 'assets/images/backgrounds/dessert.jpg';
+import RecipesForm from 'components/organisms/RecipesForm/RecipesForm';
 import GridTemplate from 'templates/GridTemplate';
 
 const categories = [
@@ -119,7 +120,7 @@ const RecipesView = () => (
                         </GridTemplate>
                     )}
                 />
-                <Route path="/recipes/add">add recipe</Route>
+                <Route path="/recipes/add" component={RecipesForm} />
             </Switch>
         </StyledWrapper>
     </NavTemplate>
